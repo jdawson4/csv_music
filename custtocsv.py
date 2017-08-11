@@ -32,7 +32,8 @@ def return_to_csv(infile,outfile):
 				#print('2, '+str(time)+', Note_on_c, '+i[5:]+', 100\n')
 				#print('2, '+str(time)+', Note_on_c, '+i[:5]+', 100\n')
 				f.write('2, '+str(time)+', Note_on_c,'+i[5:]+''', 100
-''')#maybe now it will be windows compliant?
+''')	#maybe now it will be windows compliant? -update: No.
+	#but it still kinda works though? theres something weird going on at the end i need to fix?
 				f.write('2, '+str(time)+', Note_on_c, '+i[:5]+''', 100
 ''')
 	with open(outfile,'a') as jkl:
