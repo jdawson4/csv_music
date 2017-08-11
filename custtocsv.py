@@ -2,7 +2,7 @@ import os
 
 def return_to_csv(infile,outfile):
 	time = 0
-	time_increment = 120
+	time_increment = 200
 	opening_text = """0, 0, Header, 1, 2, 480
 1, 0, Start_track
 1, 0, Title_t, "Close Encounters"
