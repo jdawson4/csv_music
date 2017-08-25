@@ -15,6 +15,7 @@ def return_to_csv(infile,outfile):
 2, 0, Instrument_name_t, "Solo Lute or Keyboard"
 2, 0, Program_c, 0, 19
 """
+	lastLine = ''
 	with open(outfile,'w') as x:
 		x.write(opening_text)
 
@@ -25,17 +26,24 @@ def return_to_csv(infile,outfile):
 		#print(len(i))
 		if len(i) == 5:
 			with open(outfile,'a') as f:
+				f.write('2, '+str(time)+', Note_on_c, '+lastLine+''', 100
+''')
 				f.write('2, '+str(time)+', Note_on_c, '+i+''', 100
 ''')
 		elif len(i) == 11:
 			with open(outfile,'a') as f:
 				#print('2, '+str(time)+', Note_on_c, '+i[5:]+', 100\n')
 				#print('2, '+str(time)+', Note_on_c, '+i[:5]+', 100\n')
+				f.write('2, '+str(time)+', Note_on_c,'+lastLine[5:]+''', 100
+''')
 				f.write('2, '+str(time)+', Note_on_c,'+i[5:]+''', 100
 ''')	#maybe now it will be windows compliant? -update: No.
 	#but it still kinda works though? theres something weird going on at the end i need to fix?
+				f.write('2, '+str(time)+', Note_on_c, '+lastLine[:5]+''', 100
+''')
 				f.write('2, '+str(time)+', Note_on_c, '+i[:5]+''', 100
 ''')
+		lastLine = i
 	with open(outfile,'a') as jkl:
 		time += time_increment
 		jkl.write('''2, '''+str(time)+''', End_track
