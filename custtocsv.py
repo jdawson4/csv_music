@@ -136,7 +136,7 @@ def returnToCSV (infile,outpath):
 1, 0, Text_t, "Sample for MIDIcsv Distribution"
 1, 0, Copyright_t, "This file is in the public domain"
 1, 0, Time_signature, 4, 2, 24, 8
-1, 0, Tempo, 1200000
+1, 0, Tempo, 1100000
 1, 0, End_track
 2, 0, Start_track
 2, 0, Instrument_name_t, "Solo Lute or Keyboard"
@@ -147,6 +147,7 @@ def returnToCSV (infile,outpath):
 
 	time = 0
 	lastLine = ''
+	futime = 0
 
 	heregoessometext = open(outpath, 'w')
 	heregoessometext.write(startThingy)
@@ -164,9 +165,24 @@ def returnToCSV (infile,outpath):
 				#print(line)
 				#print(lastLine)
 				#print('changes at '+str(time))
+
+				#this doesnt work... idk why, but it still makes hella long notes
+				#if ((time - futime) < 30):
+				#	time = time + 30
+				#	print("adding 30 to the time")
+				#elif ((time - futime) > 10000):
+				#	time = time + ((time - futime) - 10000)
+				#	print("subtracting 70 from the time")
+				#futime = time
+				#print(str(time))
+
+				if ((time - futime) > 800) or ((time - futime) < 65):
+					time = futime + 110
+				futime = time
+
 				f.write('2, '+str(time)+', Note_on_c, 0, '+convertBackToGoofyNumberSystem(lastLine)+', 0'+'\n')
 				f.write('2, '+str(time)+', Note_on_c, 0, '+convertBackToGoofyNumberSystem(line)+', 100'+'\n')
-			#print(str(time))
+				
 			
 			time += 1
 			lastLine = line

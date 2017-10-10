@@ -157,13 +157,20 @@ def customize (inpath, outpath):
 				#print(time)
 				if (int(greatest_time) < int(time)):
 					greatest_time = time
-		print('greatest time found: '+greatest_time)
+		print('greatest time found: ' + greatest_time)
 		#this whole block of code should just
 		#find the highest time in the piece
 
 		for line in lines:
 			if (line[-21:-12] == 'Note_on_c') & (line[-3:] == '100'):
 				number_of_spaces  = int(line[3:-23]) - int(lastLine[3:-23])
+				#if (number_of_spaces < 0):
+					#print("houston, we have a negative number")
+				if (number_of_spaces > 250):
+					number_of_spaces = 250
+					print('changing length to 250')
+				if (number_of_spaces < 10):
+					number_of_spaces = 10
 				#print(int(number_of_spaces))
 				seriouslyjustiterateoverintegers=0
 				while seriouslyjustiterateoverintegers < number_of_spaces:
