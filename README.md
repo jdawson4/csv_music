@@ -1,7 +1,6 @@
 # csv_music
 This branch of csv_music is designed to create music independently of the length of the notes being played.
 
-
 Converts CSV files (made by a .midi to .csv converter) into a file that only contains notes (and back again).
 
 Inspired by this video by YouTuber Carykh: https://www.youtube.com/watch?v=SacogDL_4JU
