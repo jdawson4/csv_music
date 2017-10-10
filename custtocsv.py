@@ -126,7 +126,7 @@ def convertBackToGoofyNumberSystem(note):
 	else:
 		return '60'
 		print('JACOB YOU CODED THE CONVERTION CHECK WRONG NOOOOOOOOOOOOOOO')
-	#et cetera, you need to hardcode these later jacob
+		# yeah, yeah, i shouldn't hardcode things
 
 def returnToCSV (infile,outpath):
 
@@ -162,19 +162,6 @@ def returnToCSV (infile,outpath):
 		#god this is gonna be weird to algorithmize
 		for line in lines:
 			if (line != lastLine):
-				#print(line)
-				#print(lastLine)
-				#print('changes at '+str(time))
-
-				#this doesnt work... idk why, but it still makes hella long notes
-				#if ((time - futime) < 30):
-				#	time = time + 30
-				#	print("adding 30 to the time")
-				#elif ((time - futime) > 10000):
-				#	time = time + ((time - futime) - 10000)
-				#	print("subtracting 70 from the time")
-				#futime = time
-				#print(str(time))
 
 				if ((time - futime) > 800) or ((time - futime) < 65):
 					time = futime + 110
