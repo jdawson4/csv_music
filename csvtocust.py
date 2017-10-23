@@ -1,5 +1,34 @@
 import os
 
+def prelim(inFile,outFile):
+	rapidRamenCooker = [line.rstrip('\n') for line in open(inFile)]
+	opener = open(outFile,'w')
+	opener.close()
+	opener2 = open('semi/temp','w')
+	opener2.close()
+	for i in rapidRamenCooker:
+		with open('semi/temp','a') as l:
+			#print('true')
+			#print(i[-4:])
+			#print(i[-22:-13])
+			if (i[-21:-12] == 'Note_on_c') or (i[-22:-13] == 'Note_on_c'):
+				#print(i)
+				#print(i[-4])
+				if i[-4] != '1':
+					l.write(i[:-3] + '100'+'\n')
+				elif  i[-4:] != '00':
+					l.write(i[:-4] + '100\n')
+				else:
+					l.write(i + '\n')
+			else:
+					l.write(i + '\n')
+	slowerRamenCooker = [line.rstrip('\n') for line in open('semi/temp')]
+	for i in slowerRamenCooker:
+		with open(outFile,'a') as m:
+			if i[-21:-11] == 'Note_off_c':
+				m.write(i[0:-22]+' Note_on_c,'+i[-10:]+'\n')
+			else:
+				m.write(i+'\n')
 def meganify(inTim):
 	if inTim == '30':
 		return'a'
@@ -168,7 +197,7 @@ def customize (inpath, outpath):
 					#print("houston, we have a negative number")
 				if (number_of_spaces > 250):
 					number_of_spaces = 250
-					print('changing length to 250')
+					#print('changing length to 250')
 				if (number_of_spaces < 10):
 					number_of_spaces = 10
 				#print(int(number_of_spaces))
@@ -184,5 +213,6 @@ def customize (inpath, outpath):
 				#print(lastLine)
 
 for q in os.listdir('incsv'):
+	prelim('incsv/'+q,'semi/'+q)
 	print(q + ' written into outcust/'+q[:-3]+'cust')
-	customize('incsv/'+ q , 'outcust/'+q[:-3]+'cust')
+	customize('semi/'+q, 'outcust/'+q[:-3]+'cust')
