@@ -5,3 +5,5 @@ Inspired by this video by YouTuber Carykh: https://www.youtube.com/watch?v=Sacog
 This repository contains files used to turn .csv files into .cust files (just a name I made) and back again for use in Andrej Karpathy's character-based RNN (found here:https://github.com/karpathy/char-rnn).
 
 I converted the .midi files into .csv files using this utilty: http://www.fourmilab.ch/webtools/midicsv/.
+
+Some sample outputs I've created using this utility can be found here: drive.google.com/open?id=1DOPu7nNsHKnkEfyfk5oJqfGXhY-OrhPz.
